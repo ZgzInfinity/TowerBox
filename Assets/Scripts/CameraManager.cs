@@ -16,20 +16,33 @@ public class CameraManager : MonoBehaviour
     private Vector3 preShakePosition;
     private float shakeTimer;
     private float highestBoxPosition = -5f;
+    private Vector3 initialPosition;
+    private bool scrolling; 
 
     private void Awake()
     {
         Instance = this;
+        initialPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shaking)
+        if (GameManager.Instance.isGameActive)
         {
-            CheckShakeEffect();
+            if (shaking)
+            {
+                CheckShakeEffect();
+            }
+            CheckCameraPosition();
         }
-        CheckCameraPosition();
+        else
+        {
+            if (scrolling)
+            {
+                scrollCamera();
+            }
+        }
     }
 
     private void CheckCameraPosition()
@@ -49,7 +62,7 @@ public class CameraManager : MonoBehaviour
         }
         else
         {
-            shaking = true;
+            shaking = false;
             shakeTimer = 0f;
             transform.localPosition = preShakePosition;
         }
@@ -70,4 +83,17 @@ public class CameraManager : MonoBehaviour
         }
     }
         
+    private void scrollCamera()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, initialPosition, 0.15f);
+        if (transform.position == initialPosition)
+        {
+            scrolling = false;
+        }
+    }
+
+    public void ResetCameraPosition()
+    {
+        scrolling = true;
+    }
  }
