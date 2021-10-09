@@ -10,7 +10,8 @@
 
 # Introduction
 
-This is my first videogame made with Unity for a mobile platform (Android). In order to implement this game i have got intermediate physics concepts, triggers and collisions in 2D and 3D, design and editing of prefabs, creation of animations and graphical interfaces, sounds and scriptable objects.
+This is my first videogame made with Unity for a mobile platform (Android). In order to implement this game i have got intermediate physics concepts, triggers and
+collisions in 2D and 3D, design and editing of prefabs, creation of animations and graphical interfaces, sounds and scriptable objects.
 
 &nbsp;
 
